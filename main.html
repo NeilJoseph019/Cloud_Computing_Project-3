@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f1f1f1;
+}
+
+.otherUserDetails {
+  top: 0;
+  overflow: hidden;
+  padding: 5px;
+  background-color: #e8ecf2;
+}
+
+.otherUserDetails p {
+  float: left;
+  display: block;
+  color: #8595ad;
+  margin-left: 40px;
+  font-family:Comic sans MS;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+input[type=text], select  {
+  width: 80%;
+  padding: 12px 40px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+input[type=date]  {
+  width: 80%;
+  padding: 12px 40px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+
+input[type=submit] {
+  width: 15%;
+  background-color: #0644a5;
+  color: white;
+  padding: 14px 15px;
+  margin: 9px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+textarea{
+  width: 80%;
+  padding: 12px 40px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+div {
+  border-radius: 20px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 12px 40px;
+  font-family:Comic sans MS;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  <!--margin: 4px 2px;-->
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.buttonPress{
+background-color: white;
+  color: black;
+  font-family:Comic sans MS;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #919499;
+}
+.buttonPress:hover {background-color: #e7e7e7;}
+
+
+/* Header/Blog Title */
+.header {
+  position: relative;
+  padding: 30px;
+  margin-top: 10px;
+  text-align: center;
+  background: #adc0dd;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+.userDP {
+  position: absolute;
+  border-radius: 400px;
+  <!--background: #000000;-->
+  <!--background-image : url('user_icon.jpg');-->
+  padding: 10px;
+  width: 124px;
+  height: 124px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  padding: 5px;
+  background-color: #e8ecf2;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #8595ad;
+  margin-left: 40px;
+  font-family:Comic sans MS;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+<!--.topnav input[type=text] {-->
+  <!--padding: 6px;-->
+  <!--margin-top: 1px;-->
+  <!--font-size: 16px;-->
+  <!--border: none;-->
+<!--}-->
+
+.topnav .search-container {
+background: #e8ecf2;
+  float: right;
+}
+
+.topnav input[type=text] {
+
+  border: none;
+  width: 80%;
+  padding: 8px 40px;
+  margin: 2px 0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.topnav .search-container button {
+  border: none;
+  color: black;
+  padding: 12px 40px;
+  text-align: center;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+
+.content {
+    background-color: #ddd;
+    margin-left: 40px;
+    padding-left: 50px;
+    margin-right: 40px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    }
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.middlecolumn {
+  float: left;
+  width: 50%;
+}
+
+/* Right column */
+.leftcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-right : 8px;
+}
+
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left : 8px;
+}
+
+/* image */
+.image {
+  background-color: #76a5f2;
+  font-family:Comic sans MS;
+  <!--color: #ffffff;-->
+  font-size: 30px;
+  width:95% ;
+  padding : 80px;
+}
+
+.image img {
+  width: 90%;
+  height: auto;
+}
+
+ img.thumbnail {
+	width: 100px;
+	height: 70px;
+    background: url(http://goo.gl/vyAs27) no-repeat scroll 0 0;
+	}
+
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding-left: 20px;
+  padding-top: 5px;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */1
+.footer {
+  padding: 1px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 15px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .middlecolumn,.rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+}
+
+</style>
+</head>
+<body>
+
+
+{% block content %}
+
+
+{% if myuser %}
+
+{% if myuser.user_name | length == 0 %}
+<div class="topnav" >
+
+    <a href="#"> About </a>
+    <a style="float:right;margin-left: 8px;" href="{{ url }}" >Logout</a>
+
+</div>
+
+<div  class="content" style="text-align:center; height 100%; width : 40%; padding-bottom :10px;padding-top :10px; margin-left : 30%;">
+
+        <form   method="Get" style="width: 100%; margin-right: 10px;  ">
+            <p style="font-family:Comic sans MS;font-size: 24px; ">Hi There! Lets get started. </p>
+
+            <br>
+
+            <label style="font-family:Comic sans MS;font-size: 24px; " for="UserName"><b> User Name </b></label>
+            <input type="text" placeholder="Enter User Name " name="user_name" required>
+            <br>
+
+            <label style="font-family:Comic sans MS;font-size: 24px; " for="bio_text "><b> Bio  </b></label>
+            <br>
+            <input type="text" placeholder="Enter bio" name="bio_text" required>
+
+            <!--<br>-->
+
+            <!--<label style="font-family:Comic sans MS;font-size: 24px; " for="Birthdate"><b> Birth date </b></label>-->
+            <!--<input type="date" placeholder="Enter Birthdate " name="Birthdate" required>-->
+
+            <br/>
+
+            <input style="text-align:center"  type="Submit" value="Submit">
+            <br/>
+            <br/>
+
+
+        </form>
+
+    </div>
+
+{% else %}
+
+<div class="topnav" >
+    <a href="#"> Home </a>
+    <a href="#"> Notifications </a>
+    <a href="#"> Messages </a>
+    <a href="#"> About </a>
+    <!--<form method="get">-->
+        <!--<input  style="width : 17%; margin-left: 20px; margin-top: 10px;float:center" type="text" placeholder="Search.." name="Search">-->
+        <!--<input type="submit" style="width : 5%; border-radius: 20px; padding: 5px;margin-left: 8px;" value="search" name="searchUser">-->
+    <!--</form>-->
+    <a style="float:right;margin-left: 8px;" href="{{ url }}" >Logout</a>
+    <a style="float:right;margin-left: 8px;"> Setting </a>
+    <div class="search-container">
+        <form action="#" method="Get">
+            <input  type="text" placeholder="Search.." pattern="[A-Za-z]*" name="search_text">
+            <select style="width : 7%; border-radius: 15px; padding: 15px; padding-bottom: 2px;margin-left: 10px;" name="query_type">
+                <option value="user">All</option>
+                <option value="user">User</option>
+                <option value="post">Post</option>
+            </select>
+        </form>
+    </div>
+</div>
+
+
+<div class="header">
+  <h1>My Website</h1>
+  <div class="userDP" style="float:left ;"></div>
+  <p>Resize the browser window to see the effect.</p>
+</div>
+
+<div class="row">
+
+   <div class="leftcolumn">
+
+       <div class="card" >
+           <br>
+
+           <p style="font-family:Comic sans MS;font-size: 24px; " >About Me</p>
+           <a style="font-family:Comic sans MS;font-size: 20px; " href="/editprofile?user_id={{ myuser.user_id }}" >{{myuser.user_name}}</a>
+           <p style="font-family:Comic sans MS;font-size: 20px; " >Bio :{{myuser.bio_text}}</p>
+           <p style="font-family:Comic sans MS;font-size: 20px; " >loc :{{myuser.location}}</p>
+           <p style="font-family:Comic sans MS;font-size: 20px; " >D.O.B :{{myuser.dob}}</p>
+
+           <p style="font-family:Comic sans MS;font-size: 20px; " >Tweets :{{myuser.tweet_ids|length}}</p>
+           <p style="font-family:Comic sans MS;font-size: 20px; " >following :{{myuser.user_following|length}}</p>
+       </div>
+
+        <div class="card">
+      <p style="font-family:Comic sans MS;font-size: 20px; ">Now Trending</p>
+      <div class="image"><p>trending</p></div>
+    </div>
+
+        <div class="card">
+      <h3>Follow Me</h3>
+      <p>Some text..</p>
+    </div>
+
+    </div>
+`
+  <div class="middlecolumn">
+
+       <div class="card">
+            <form  method="Post">
+                <textarea rows="4" cols="50" name="share_text" maxlength="250">{% if edittweet %}{{edittweet.share_text}}{% endif %}</textarea>
+                <input type="submit" value="{% if edittweet  %}Update{% else %}Share{% endif %}" name = "share_type"/><input type="hidden" value="{% if edittweet  %} {{edittweet.key.id()}}{% endif %}" name = "edit_tweet_id"/>
+                &nbsp;<input type="file" name="share_image" accept="image/*"/>
+           </form>
+       </div>
+
+        <h2>Tweets</h2>
+
+      {%  if myuser.tweet_ids|length > 0 %}
+
+          {% for tweet in tweets %}
+
+              <div class="card">
+                  <form method="Get">
+                      <div class="image" style="height:200px;"><img src="/view_photo/{{tweet.avatar}}" class="thumbnail"></div>
+                      <h3><a style="font-family:Comic sans MS;font-size: 18px; " href="/editprofile?user_id={{ tweet.user_id }}">{{ tweet.user_name }}</a></h3>
+                      <p style="font-family:Comic sans MS;font-size: 18px; " >{{tweet.share_text}}</p>
+                      <p style="font-family:Comic sans MS;font-size: 18px; " > {{tweet.time}}</p>
+
+                    {% if tweet.user_id ==  myuser.key.id() %}
+                        <input type="hidden" value="{{ tweet.key.id() }}" name = "tweet_id" hidden/>
+                        <input type="submit" value="Delete" name = "query_type"/>
+                        <input type="submit" value="Edit" name = "query_type"/>
+                    {% endif %}
+                  </form>
+              </div>
+
+
+          {% endfor %}
+      {% else %}
+
+      <div class="card">
+
+           <p style="font-family:Comic sans MS;font-size: 16px; "> You don't have any new tweets. you need to start following to see the tweets here!....</p>
+
+      </div>
+
+        {% endif %}
+  </div>
+
+    <div class="rightcolumn">
+
+        <div class="card">
+        <p style="font-family:Comic sans MS;font-size: 20px; ">who to follow</p>
+
+    </div>
+
+    </div>
+
+</div>
+
+
+{% endif %}
+
+{% else %}
+<div class="content" style="text-align:center;height 100% ">
+
+        <div class="image">
+            <p style="font-family:Comic sans MS;font-size: 25px; " >Hi There! Welcome to Twitter. </p>
+            <p style="font-family:Comic sans MS;font-size: 25px; " > Connect with your friends and make new ones. Also get in-the-moment updates on things that interests you. </p>
+
+        </div>
+
+        <br/>
+        <br/>
+
+        <button class="button buttonPress" style="text-align:center"  onclick="location.href=' {{ url }} '" type="button">Login</button>
+        <br/>
+        <br/>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+    <div class="footer">
+      <h2>Footer</h2>
+    </div>
+
+</body>
+</html>

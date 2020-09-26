@@ -1,0 +1,105 @@
+{%  extends "main.html" %}
+
+{% block content %}
+<form action="/editprofile" method="post">
+<div class="topnav" >
+
+    <a href="/"> Home </a>
+
+</div>
+
+
+<div class="header">
+  <h1>My Website</h1>
+  <div class="userDP" style="float:left ;">
+      <img src="\user_icon.jpg">
+  </div>
+  <p>Resize the browser window to see the effect.</p>
+</div>
+
+<div class="row">
+
+    <div class="leftcolumn">
+
+       <div class="card">
+
+           <br>
+
+           <p style="font-family:Comic sans MS;font-size: 18px; " > {{ myuser.user_name }}</p>
+
+           <p style="font-family:Comic sans MS;font-size: 18px; " > {{ myuser.bio_text }}</p>
+
+           <p style="font-family:Comic sans MS;font-size: 18px; " > location:</p>
+           <input name="location" type="text" value="{{myuser.location}}" {% if otheruserprofile %} disabled {%endif%}}> <br />
+
+           <p style="font-family:Comic sans MS;font-size: 18px; " > Date of birth:</p>
+           <input name="date" type="date" value="{{myuser.dob}}" {% if otheruserprofile %} disabled {%endif%}}> <br />
+
+           {% if otheruserprofile %}{%else%}
+                    <input type="hidden" value="{{myuser.key.id()}}" name="user_id"/>
+                    <input style="padding-right:30%" type="submit" value="Update" name="update_user" />
+           {%endif%}
+
+       </div>
+
+       <div class="card">
+           <p style="font-family:Comic sans MS;font-size: 20px; ">Now Trending</p>
+           <div class="image"><p>trending</p></div>
+       </div>
+
+    </div>
+
+  <div class="middlecolumn">
+
+       <div class="card">
+
+
+
+           <table style=" ">
+               <tr>
+                   <th style="font-family:Comic sans MS;font-size: 16px;margin-left: 30px; padding: 20px; ">Tweets</th>
+
+                   <th style="font-family:Comic sans MS;font-size: 16px;margin-left: 30px;padding: 20px;  ">Following</th>
+               </tr>
+                <tr>
+                   <td style="font-family:Comic sans MS;font-size: 16px;margin-left: 30px;padding: 15px;  ">{{ myuser.tweet_ids|length}}</td>
+
+                   <td style="font-family:Comic sans MS;font-size: 16px;margin-left: 30px;padding: 15px;  ">{{ myuser.user_following|length}}</td>
+               </tr>
+
+           </table>
+
+
+
+    </div>
+
+        <h2 >User Tweets</h2>
+        {% for tweet in tweets %}
+           <div class="card">
+                  <img src="/view_photo/{{tweet.avatar}}" class="thumbnail">
+                  <h3><a >{{ tweet.user_name }}</a></h3>
+                  <p style="font-family:Comic sans MS;font-size: 16px;">{{tweet.share_text}}</p>
+                  <p style="font-family:Comic sans MS;font-size: 16px;"> {{tweet.time}}</p>
+           </div>
+        {% endfor %}
+
+
+  </div>
+</form>
+    <div class="rightcolumn">
+        <div class="card">
+            {% if otheruserprofile %}
+
+                <form action="/editprofile" method="post">
+                    <input style="padding-right: 30%" type="submit" value="{{follow}}" name = "follow_user" />
+                    <input type="hidden" value="{{myuser.key.id()}}" name="user_id"/>
+                </form>
+
+            {%endif%}
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
